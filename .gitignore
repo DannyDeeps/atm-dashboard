@@ -2,6 +2,6 @@ vendor/
 node_modules/
 example/
 config.php
+collectors/config.php
 AGENTS.md
-test-results/
 data/

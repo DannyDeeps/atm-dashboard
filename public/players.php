@@ -5,7 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use AtmDashboard\Database;
 
 $config = require __DIR__ . '/../config.php';
-$db = new Database($config['database_config'] ?? $config['database']);
+$db = new Database($config['database']);
 $pdo = $db->pdo();
 
 $totalQuests = (int) $pdo->query('SELECT COUNT(*) FROM quests')->fetchColumn();

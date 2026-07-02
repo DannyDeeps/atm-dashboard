@@ -20,8 +20,7 @@ use AtmDashboard\Controllers\MapController;
 use AtmDashboard\Controllers\ArmoryController;
 
 $config = require __DIR__ . '/../config.php';
-$dbConfig = $config['database_config'] ?? $config['database'];
-$db = new AtmDashboard\Database($dbConfig);
+$db = new AtmDashboard\Database($config['database']);
 $pdo = $db->pdo();
 $factory = new Psr17Factory;
 
@@ -36,9 +35,6 @@ $router->get('/map', new MapController($pdo, $config));
 $router->get('/map/', function () use ($factory) {
     return $factory->createResponse(302)->withHeader('Location', '/map')->withBody($factory->createStream(''));
 });
-
-// ── Landing page mockups ──
-require __DIR__ . '/mockups.php';
 
 // Redirect legacy .php URLs to clean paths
 $router->get('/index.php', function () use ($factory) {
