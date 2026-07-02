@@ -1,0 +1,22 @@
+{
+    "name": "dmh/atm10glipglops",
+    "autoload": {
+        "psr-4": {
+            "AtmDashboard\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Danny Huggins",
+            "email": "dannyhuggins@proton.me"
+        }
+    ],
+    "require": {
+        "league/route": "^6.2",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1"
+    }
+}

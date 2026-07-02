@@ -1,0 +1,7 @@
+vendor/
+node_modules/
+example/
+config.php
+AGENTS.md
+test-results/
+data/

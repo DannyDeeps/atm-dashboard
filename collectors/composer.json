@@ -1,0 +1,12 @@
+{
+    "name": "dmh/atm10-collector",
+    "description": "Data collection micro-app for the ATM10 dashboard — runs on the game server and pushes stats to Postgres",
+    "autoload": {
+        "psr-4": {
+            "AtmCollector\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.1"
+    }
+}
