@@ -1,0 +1,87 @@
+CREATE TABLE IF NOT EXISTS players (
+  uuid TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  first_seen TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  last_seen TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  world_tier TEXT
+);
+
+CREATE TABLE IF NOT EXISTS player_snapshots (
+  id SERIAL PRIMARY KEY,
+  uuid TEXT NOT NULL,
+  collected_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  playtime INTEGER NOT NULL DEFAULT 0,
+  deaths INTEGER NOT NULL DEFAULT 0,
+  distance_walked INTEGER NOT NULL DEFAULT 0,
+  distance_flown INTEGER NOT NULL DEFAULT 0,
+  distance_swum INTEGER NOT NULL DEFAULT 0,
+  distance_horseback INTEGER NOT NULL DEFAULT 0,
+  blocks_mined INTEGER NOT NULL DEFAULT 0,
+  blocks_placed INTEGER NOT NULL DEFAULT 0,
+  mobs_killed INTEGER NOT NULL DEFAULT 0,
+  players_killed INTEGER NOT NULL DEFAULT 0,
+  items_crafted INTEGER NOT NULL DEFAULT 0,
+  items_used INTEGER NOT NULL DEFAULT 0,
+  damage_dealt DOUBLE PRECISION NOT NULL DEFAULT 0,
+  damage_taken DOUBLE PRECISION NOT NULL DEFAULT 0,
+  jumps INTEGER NOT NULL DEFAULT 0,
+  falls INTEGER NOT NULL DEFAULT 0,
+  time_since_death INTEGER NOT NULL DEFAULT 0,
+  time_since_rest INTEGER NOT NULL DEFAULT 0,
+  trades INTEGER NOT NULL DEFAULT 0,
+  anvil_uses INTEGER NOT NULL DEFAULT 0,
+  chests_opened INTEGER NOT NULL DEFAULT 0,
+  records_played INTEGER NOT NULL DEFAULT 0,
+  bell_rings INTEGER NOT NULL DEFAULT 0,
+  lootr_looted INTEGER NOT NULL DEFAULT 0,
+  mob_kills TEXT NOT NULL DEFAULT '{}'
+);
+
+CREATE TABLE IF NOT EXISTS player_wealth (
+  uuid TEXT PRIMARY KEY,
+  diamonds INTEGER NOT NULL DEFAULT 0,
+  emeralds INTEGER NOT NULL DEFAULT 0,
+  allthemodium_ingots INTEGER NOT NULL DEFAULT 0,
+  vibranium_ingots INTEGER NOT NULL DEFAULT 0,
+  unobtainium_ingots INTEGER NOT NULL DEFAULT 0,
+  uru_ingots INTEGER NOT NULL DEFAULT 0,
+  atm_stars INTEGER NOT NULL DEFAULT 0,
+  wealth_score DOUBLE PRECISION NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS quests (
+  id TEXT PRIMARY KEY,
+  chapter_id TEXT NOT NULL,
+  title TEXT,
+  subtitle TEXT,
+  description TEXT,
+  x DOUBLE PRECISION NOT NULL DEFAULT 0,
+  y DOUBLE PRECISION NOT NULL DEFAULT 0,
+  dependencies TEXT,
+  optional BOOLEAN NOT NULL DEFAULT FALSE,
+  size DOUBLE PRECISION NOT NULL DEFAULT 1.0,
+  shape TEXT NOT NULL DEFAULT 'circle',
+  min_width INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS quest_chapters (
+  id TEXT PRIMARY KEY,
+  title TEXT,
+  group_id TEXT,
+  order_index INTEGER NOT NULL DEFAULT 0,
+  filename TEXT
+);
+
+CREATE TABLE IF NOT EXISTS quest_progress (
+  id SERIAL PRIMARY KEY,
+  uuid TEXT NOT NULL,
+  quest_id TEXT NOT NULL,
+  completed_at TIMESTAMP,
+  started_at TIMESTAMP,
+  UNIQUE (uuid, quest_id)
+);
+
+CREATE TABLE IF NOT EXISTS quest_chapter_groups (
+  id TEXT PRIMARY KEY,
+  title TEXT
+);
