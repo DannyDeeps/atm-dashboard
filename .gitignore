@@ -4,4 +4,6 @@ example/
 config.php
 collectors/config.php
 AGENTS.md
-data/
+/data/
+collectors/data/*
+!collectors/data/.gitkeep

@@ -95,6 +95,10 @@ class StatsCollector {
     $name = $this->lookupNameViaMojang($uuid);
     if ($name !== null) {
       $normalizedCache[$uuid] = $name;
+      $dir = dirname($cacheFile);
+      if (!is_dir($dir)) {
+        mkdir($dir, 0755, true);
+      }
       file_put_contents($cacheFile, json_encode($normalizedCache, JSON_PRETTY_PRINT));
     }
 
