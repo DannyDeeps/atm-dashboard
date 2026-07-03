@@ -1,17 +1,21 @@
 FROM dunglas/frankenphp:latest
 
 # Required PHP extensions
-RUN install-php-extensions pdo_pgsql
+RUN install-php-extensions pdo_pgsql zip
 
 # Production PHP settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
+# Install Composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+  && php composer-setup.php --install-dir=/usr/bin --filename=composer --quiet \
+  && php -r "unlink('composer-setup.php');"
+
 # Copy app
 COPY . /app
+WORKDIR /app
 
 # Install PHP dependencies
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-WORKDIR /app
 RUN composer install --no-interaction --no-dev --optimize-autoloader
 
 # Heads cache must be writable at runtime

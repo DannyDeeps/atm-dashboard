@@ -1,0 +1,11 @@
+vendor/
+collectors/
+node_modules/
+.git/
+.gitignore
+.dockerignore
+AGENTS.md
+example/
+test-results/
+data/
+Makefile
