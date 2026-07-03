@@ -10,7 +10,8 @@ class AwardsService
             'haven' => ['label' => 'Haven', 'color' => '#a6e3a1', 'short' => 'H'],
             'frontier' => ['label' => 'Frontier', 'color' => '#fab387', 'short' => 'F'],
             'ascent' => ['label' => 'Ascent', 'color' => '#89b4fa', 'short' => 'A'],
-            'sanctuary' => ['label' => 'Sanctuary', 'color' => '#cba6f7', 'short' => 'S'],
+            'summit' => ['label' => 'Summit', 'color' => '#94e2d5', 'short' => 'S'],
+            'sanctuary' => ['label' => 'Sanctuary', 'color' => '#cba6f7', 'short' => 'Sa'],
             'pinnacle' => ['label' => 'Pinnacle', 'color' => '#f9e2af', 'short' => 'P'],
             'dungeon' => ['label' => 'Dungeon', 'color' => '#f38ba8', 'short' => 'D'],
         ];
