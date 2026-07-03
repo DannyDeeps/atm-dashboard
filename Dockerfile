@@ -15,6 +15,9 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 COPY . /app
 WORKDIR /app
 
+# Create config.php from example (env vars override at runtime)
+RUN cp config.example.php config.php
+
 # Install PHP dependencies
 RUN composer install --no-interaction --no-dev --optimize-autoloader
 
